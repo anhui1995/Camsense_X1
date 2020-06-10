@@ -12,11 +12,13 @@ Camsense X1 数据帧格式：
 
 
 
-每个数据帧包含8个距离信息，每个距离所对应的角度为 angle = startAngle+stepAngle*N;
+每个数据帧包含8个距离信息，每个距离所对应的角度为 angle = startAngle+stepAngle*N； 
+
 其中（N=0,1，……，7）；stepAngle = (endAngle - startAngle)/8.0;（if(endAngle<startAngle)  endAngle += 360.0;）
 每个距离信息包括距离和可信度两个数据。
 
 每一个数据帧共36字节，包含的信息依次为：
+
 数据头两字节，固定值：0x03，0x08。 buffer[0] == 0x03 ，buffer[1] == 0x08；
 
 转速信息一字节：buffer[2]；
@@ -25,29 +27,21 @@ Camsense X1 数据帧格式：
 
 此数据帧的起始角度两字节：startAngle = (buffer[5]<<8 | buffer[4])/64.0 - 640.0；
 
-距离信息一 distance = buffer[7]<<8 | buffer[6];
-距离信息一 quality = buffer[8];
+距离信息一 distance = buffer[7]<<8 | buffer[6];  quality = buffer[8];
 					
-距离信息二 distance = buffer[10]<<8 | buffer[9];
-距离信息二 quality = buffer[11];
+距离信息二 distance = buffer[10]<<8 | buffer[9];  quality = buffer[11];
 
-距离信息三 distance = buffer[13]<<8 | buffer[12];
-距离信息三 quality = buffer[14];
+距离信息三 distance = buffer[13]<<8 | buffer[12];  quality = buffer[14];
 
-距离信息四 distance = buffer[16]<<8 | buffer[15];
-距离信息四 quality = buffer[17];
+距离信息四 distance = buffer[16]<<8 | buffer[15];  quality = buffer[17];
 
-距离信息五 distance = buffer[19]<<8 | buffer[18];
-距离信息五 quality = buffer[20];
+距离信息五 distance = buffer[19]<<8 | buffer[18];  quality = buffer[20];
 
-距离信息六 distance = buffer[22]<<8 | buffer[21];
-距离信息六 quality = buffer[23];
+距离信息六 distance = buffer[22]<<8 | buffer[21];  quality = buffer[23];
 
-距离信息七 distance = buffer[25]<<8 | buffer[24];
-距离信息七 quality = buffer[26];
+距离信息七 distance = buffer[25]<<8 | buffer[24];  quality = buffer[26];
 
-距离信息八 distance = buffer[28]<<8 | buffer[27];
-距离信息八 quality = buffer[29];
+距离信息八 distance = buffer[28]<<8 | buffer[27];  quality = buffer[29];
 
 此数据帧的结束角度两字节：endAngle =  (buffer[31]<<8 | buffer[30])/64.0 - 640.0 ；
 
@@ -55,7 +49,7 @@ Camsense X1 数据帧格式：
 
 数据尾两字节，固定值：0x55，0xAA。 buffer[34] == 0x55 ，buffer[35] == 0xAA。
 
-
-
 具体代码也有另一个文件就是我的数据接收以及处理函数，C语言，STM32F103ZET6单片机
+
+
 
