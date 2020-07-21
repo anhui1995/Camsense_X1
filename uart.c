@@ -103,11 +103,8 @@ void USART2_IRQHandler(void)                	//串口2中断服务程序
 				buffer[bufferNum++] = Res2;
 				break;
 				
-			case 3 : if(Res2==0x4E){
-					bufferNum++;
-				}  else {
-					bufferNum = 0;
-				} 
+			case 3 : //根据淘宝的一位买家的问题，这里可能不是固定的0X4E
+				buffer[bufferNum++] = Res2;
 				break;
 
 			case 31: //如需接收完整的数据帧则此处应为35，最后四字节数据为校验和数据尾，为节省时间，所以就不接收了。
