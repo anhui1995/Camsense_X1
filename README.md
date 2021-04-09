@@ -33,14 +33,23 @@
 
 此数据帧的起始角度两字节：startAngle = (buffer[5]<<8 | buffer[4])/64.0 - 640.0；
 
+
 距离信息一 distance = buffer[7]<<8 | buffer[6];  quality = buffer[8];
+
 距离信息二 distance = buffer[10]<<8 | buffer[9];  quality = buffer[11];
+
 距离信息三 distance = buffer[13]<<8 | buffer[12];  quality = buffer[14];
+
 距离信息四 distance = buffer[16]<<8 | buffer[15];  quality = buffer[17];
+
 距离信息五 distance = buffer[19]<<8 | buffer[18];  quality = buffer[20];
+
 距离信息六 distance = buffer[22]<<8 | buffer[21];  quality = buffer[23];
+
 距离信息七 distance = buffer[25]<<8 | buffer[24];  quality = buffer[26];
+
 距离信息八 distance = buffer[28]<<8 | buffer[27];  quality = buffer[29];
+
 
 此数据帧的结束角度两字节：endAngle =  (buffer[31]<<8 | buffer[30])/64.0 - 640.0 ；
 校验位两字节：buffer[32]，buffer[33]；
